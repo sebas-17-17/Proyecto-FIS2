@@ -1,0 +1,12 @@
+Quito-Ecuador,Madrid-España,UIO-MAD-01,1100.0
+Quito-Ecuador,Londres-Inglaterra,UIO-LON-02,1250.0
+Guayaquil-Ecuador,Madrid-España,GYE-MAD-03,1050.0
+Bogotá-Colombia,París-Francia,BOG-PAR-04,950.0
+Lima-Perú,Roma-Italia,LIM-ROM-05,1300.0
+Santiago-Chile,Barcelona-España,SCL-BCN-06,1150.0
+Buenos Aires-Argentina,Londres-Inglaterra,EZE-LON-07,1400.0
+Quito-Ecuador,Guayaquil-Ecuador,UIO-GYE-08,100.0
+Bogotá-Colombia,Lima-Perú,BOG-LIM-09,180.0
+Quito-Ecuador,Cuenca-Ecuador,UIO-CUE-10,100.0
+Quito-Ecuador,RioJaneiro-Brasil,UIO-BRA-11,600.0
+Quito-Ecuador,Londres-Inglaterra,UIO-LON-12,1200.0
