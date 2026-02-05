@@ -283,14 +283,15 @@ public class VistaMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(8, 8, 78));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Perpetua Titling MT", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 204, 0));
         jLabel1.setText("Aerolíneas FIS");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -312,16 +313,22 @@ public class VistaMenu extends javax.swing.JFrame {
 
         lblPoliLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/politecnicaLogo.png"))); // NOI18N
 
-        tbpMenu.setBackground(new java.awt.Color(153, 153, 153));
+        tbpMenu.setBackground(new java.awt.Color(255, 204, 0));
         tbpMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         tbpMenu.setToolTipText("");
         tbpMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        pnlOrigen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pnlVuelos.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        pnlOrigen.setBackground(new java.awt.Color(255, 255, 255));
+        pnlOrigen.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pnlOrigen.setForeground(new java.awt.Color(153, 153, 153));
+
+        jLabel16.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(153, 153, 153));
         jLabel16.setText("Origen");
 
+        cmbOrigen.setForeground(new java.awt.Color(153, 153, 153));
         cmbOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -340,7 +347,7 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addGroup(pnlOrigenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(cmbOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlOrigenLayout.setVerticalGroup(
             pnlOrigenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,11 +362,15 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        pnlDestino.setBackground(new java.awt.Color(255, 255, 255));
         pnlDestino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pnlDestino.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(153, 153, 153));
         jLabel17.setText("Destino");
 
+        cmbDestino.setForeground(new java.awt.Color(153, 153, 153));
         cmbDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout pnlDestinoLayout = new javax.swing.GroupLayout(pnlDestino);
@@ -388,12 +399,17 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        pnlFechaIda.setBackground(new java.awt.Color(255, 255, 255));
         pnlFechaIda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pnlFechaIda.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(153, 153, 153));
         jLabel18.setText("Fecha Ida");
 
+        pnlDateContainer.setBackground(new java.awt.Color(255, 255, 255));
         pnlDateContainer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlDateContainer.setForeground(new java.awt.Color(153, 153, 153));
 
         javax.swing.GroupLayout pnlDateContainerLayout = new javax.swing.GroupLayout(pnlDateContainer);
         pnlDateContainer.setLayout(pnlDateContainerLayout);
@@ -434,11 +450,15 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        pnlFechaRegreso.setBackground(new java.awt.Color(255, 255, 255));
         pnlFechaRegreso.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pnlFechaRegreso.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(153, 153, 153));
         jLabel19.setText("Fecha Regreso");
 
+        pnlDateContainer2.setBackground(new java.awt.Color(255, 255, 255));
         pnlDateContainer2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout pnlDateContainer2Layout = new javax.swing.GroupLayout(pnlDateContainer2);
@@ -468,7 +488,7 @@ public class VistaMenu extends javax.swing.JFrame {
         pnlFechaRegresoLayout.setVerticalGroup(
             pnlFechaRegresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFechaRegresoLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlFechaRegresoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlFechaRegresoLayout.createSequentialGroup()
@@ -478,12 +498,16 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        pnlCantidadPersonas.setBackground(new java.awt.Color(255, 255, 255));
         pnlCantidadPersonas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        pnlCantidadPersonas.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(153, 153, 153));
         jLabel20.setText("Pasajeros");
 
         cmbPasajeros.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        cmbPasajeros.setForeground(new java.awt.Color(153, 153, 153));
         cmbPasajeros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3" }));
         cmbPasajeros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -519,9 +543,13 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel3.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel3.setToolTipText("");
 
-        btnBuscar.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnBuscar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(153, 153, 153));
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -552,9 +580,9 @@ public class VistaMenu extends javax.swing.JFrame {
             pnlVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVuelosLayout.createSequentialGroup()
                 .addGap(111, 111, 111)
-                .addGroup(pnlVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlDestino, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(119, 119, 119)
                 .addGroup(pnlVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlFechaIda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -585,6 +613,7 @@ public class VistaMenu extends javax.swing.JFrame {
         tbpMenu.addTab("Vuelos", pnlVuelos);
 
         tblHistorial.setAutoCreateRowSorter(true);
+        tblHistorial.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         tblHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -632,23 +661,29 @@ public class VistaMenu extends javax.swing.JFrame {
 
         tbpMenu.addTab("Vuelos Comprados", pnlVuelosComprados);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Emoji", 1, 24)); // NOI18N
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Grupo EPN");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Vuelos disponibles desde Quito ");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Descubre un nuevo destino");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 3, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Perpetua Titling MT", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("\"La excelencia que cruza fronetras\"");
 
         pnlCuenca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        pnlCuencaUsd.setBackground(new java.awt.Color(255, 255, 255));
         pnlCuencaUsd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel8.setText("Cuenca");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -692,9 +727,10 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        pnlMasVuelos.setBackground(new java.awt.Color(255, 255, 255));
         pnlMasVuelos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel10.setText("¿No es lo que buscas? Aún puedes personalizar tu vuelo");
 
         javax.swing.GroupLayout pnlMasVuelosLayout = new javax.swing.GroupLayout(pnlMasVuelos);
@@ -703,7 +739,7 @@ public class VistaMenu extends javax.swing.JFrame {
             pnlMasVuelosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMasVuelosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlMasVuelosLayout.setVerticalGroup(
@@ -735,9 +771,10 @@ public class VistaMenu extends javax.swing.JFrame {
 
         pnlRioJaneiro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        pnlRioJaneiroUsd.setBackground(new java.awt.Color(255, 255, 255));
         pnlRioJaneiroUsd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel7.setText("Rio de Janeiro");
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -781,9 +818,10 @@ public class VistaMenu extends javax.swing.JFrame {
 
         pnlLondres.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        pnlLondresUsd.setBackground(new java.awt.Color(255, 255, 255));
         pnlLondresUsd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel9.setText("Londres");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -827,9 +865,10 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        pnlMasVuelos2.setBackground(new java.awt.Color(255, 255, 255));
         pnlMasVuelos2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel11.setText("¿No es lo que buscas? Aún puedes personalizar tu vuelo");
 
         javax.swing.GroupLayout pnlMasVuelos2Layout = new javax.swing.GroupLayout(pnlMasVuelos2);
@@ -870,9 +909,10 @@ public class VistaMenu extends javax.swing.JFrame {
 
         pnlGuayaquil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        pnlGuayaquilUsd.setBackground(new java.awt.Color(255, 255, 255));
         pnlGuayaquilUsd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setText("Guayaquil");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -928,8 +968,8 @@ public class VistaMenu extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(795, 795, 795))
+                                .addComponent(jLabel5))
+                            .addGap(724, 724, 724))
                         .addComponent(tbpMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1236, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -946,7 +986,7 @@ public class VistaMenu extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel3)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
