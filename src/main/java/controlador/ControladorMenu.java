@@ -94,13 +94,17 @@ public class ControladorMenu implements ActionListener, MouseListener {
     );
    }
    
-   //Metodo para abrir la siguiente vista
    private void abrirVistaVuelo(ReservaDatos reserva) {
     VistaVuelo vistaVuelo = new VistaVuelo();
-    ControladorVuelo controlador = new ControladorVuelo(vistaVuelo, reserva);
-    controlador.iniciarVistaVuelo();
+    ControladorVuelo controlador = new ControladorVuelo(
+        vistaVuelo,
+        reserva,
+        this.VistaMenu,    // referencia de la VistaMenu actual
+        this           // referencia del ControladorMenu actual
+    );
     vistaVuelo.setControlador(controlador);
-    VistaMenu.dispose();
+    controlador.iniciarVistaVuelo();
+    VistaMenu.setVisible(false); // ⚡ oculta la vistaMenu, no VistaMenu.dispose()
 }
    
    //Metodo iniciador del menu, se usará en el app(Principal -> ProyectoFIS)

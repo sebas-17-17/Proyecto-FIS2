@@ -3,17 +3,28 @@ package vista;
 import controlador.ControladorPago;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import vista.VistaMenu;
+import controlador.ControladorMenu;
+import java.util.ArrayList;
+import modelo.ReservaDatos;
+import modelo.RutaDAO;
 
 public class VistaPago extends javax.swing.JFrame {
-    
+    private VistaMenu vistaMenu; // referencia a la vista original
+private ReservaDatos reserva; // la reserva actual
+private ControladorMenu controladorMenu;
+ private RutaDAO rutaDAO = new RutaDAO();
+ 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaPago.class.getName());
 
     // Creates new form VistaPago
      
-    public VistaPago() {
-        initComponents();
-        configurarBloque();
-    }
+    public VistaPago(VistaMenu vistaMenu, ReservaDatos reserva) {
+    initComponents();
+    configurarBloque();
+    this.vistaMenu = vistaMenu; // ⚡ le pasamos la ventana original
+    this.reserva = reserva;
+}
     
     // Configurar los bloques de texto
     private void configurarBloque() {
@@ -110,6 +121,8 @@ public class VistaPago extends javax.swing.JFrame {
     public String getCodigo() {
         return txtCodigo.getText();
     }
+    
+    
     // Para que tengan un listener los botones 
     public void addBtnValidarListener(
             java.awt.event.ActionListener listenControles) {
@@ -133,11 +146,13 @@ public class VistaPago extends javax.swing.JFrame {
         txtExpiracion.setText("");
     }
     
+    
     public void setControlador(ControladorPago c) {
     addBtnAtrasListener(c);
     addBtnValidarListener(c);
     addBtnRealizarListener(c);
 }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -253,6 +268,11 @@ public class VistaPago extends javax.swing.JFrame {
 
         btnValidacion.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         btnValidacion.setText("Validar Tarjeta");
+        btnValidacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValidacionActionPerformed(evt);
+            }
+        });
 
         txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         txtCedula.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -552,37 +572,27 @@ public class VistaPago extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCompraActionPerformed
 
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
-        VistaMenu inicio = new VistaMenu();
-        inicio.setVisible(true);
-        this.dispose();
-        limpiarCampo();
+    vistaMenu.setVisible(true);
+
+    // Recargar listas de ciudades desde RutaDAO
+    ArrayList<String> ciudadesOrigen = rutaDAO.obtenerListaOrigenes();
+    ArrayList<String> ciudadesDestino = rutaDAO.obtenerListaDestinos();
+    vistaMenu.cargarCiudadesEnCombo(ciudadesOrigen);
+    vistaMenu.cargarCiudadesEnCombo2(ciudadesDestino);
+
+    // Cerrar la vistaPago actual
+    this.dispose();
+
     }//GEN-LAST:event_btnRegresarMouseClicked
+
+    private void btnValidacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnValidacionActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new VistaPago().setVisible(true));
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelTarjeta;
     private javax.swing.JTabbedPane TabMetodo;

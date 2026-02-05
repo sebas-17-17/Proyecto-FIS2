@@ -467,6 +467,11 @@ public class VistaVentaPasaje extends javax.swing.JFrame {
         btnSiguiente.setBackground(new java.awt.Color(255, 204, 0));
         btnSiguiente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btnSiguiente.setText("Siguiente");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
 
         cbGenero.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         cbGenero.setForeground(new java.awt.Color(153, 153, 153));
@@ -780,9 +785,12 @@ public class VistaVentaPasaje extends javax.swing.JFrame {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 public void setControlador(ControladorVenta c) {
-    btnSiguiente.addActionListener(c);
-    btnRegresar.addActionListener(c);
+  //nada
 }
     /**
      * @param args the command line arguments

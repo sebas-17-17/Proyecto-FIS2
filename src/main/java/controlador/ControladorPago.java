@@ -4,10 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Pago;
 import modelo.PagoDao;
 import modelo.ReservaDatos;
+import modelo.RutaDAO;
+import vista.VistaMenu;
 import vista.VistaPago;
 
 public class ControladorPago implements ActionListener, KeyListener {
@@ -15,15 +18,18 @@ public class ControladorPago implements ActionListener, KeyListener {
     private VistaPago vista;
     private PagoDao pagoDAO;
     private ReservaDatos reserva;
+    private VistaMenu vistaMenu;
+    private ControladorMenu controladorMenu;
+    private RutaDAO rutaDAO = new RutaDAO();
 
-    public ControladorPago(VistaPago vista, ReservaDatos reserva) {
+    public ControladorPago(VistaPago vista, ReservaDatos reserva, VistaMenu vistaMenu, ControladorMenu controladorMenu) {
         this.vista = vista;
         this.reserva = reserva;
-        this.pagoDAO = new PagoDao(); // lo creamos aquí
-
-        this.vista.addBtnAtrasListener(this);
-        this.vista.addBtnValidarListener(this);
-        this.vista.addBtnRealizarListener(this);      
+        this.vistaMenu = vistaMenu;
+        this.controladorMenu = controladorMenu;
+      
+      
+        
     }
 
     public void iniciarVistaPago() {
@@ -87,6 +93,18 @@ public class ControladorPago implements ActionListener, KeyListener {
                 "Compra registrada exitosamente.\nSu recibo electrónico está en Vuelos Comprados.\nGracias por viajar con nosotros.");
             vista.limpiarCampo();
         }
+        
+        if (e.getSource() == vista.btnRegresar) {
+            System.out.println(vistaMenu); 
+    vistaMenu.setVisible(true);   // muestra la ventana original
+    // Recargar combos si quieres
+    ArrayList<String> ciudadesOrigen = rutaDAO.obtenerListaOrigenes();
+    ArrayList<String> ciudadesDestino = rutaDAO.obtenerListaDestinos();
+    vistaMenu.cargarCiudadesEnCombo(ciudadesOrigen);
+    vistaMenu.cargarCiudadesEnCombo2(ciudadesDestino);
+
+    vista.dispose(); // cierra la vistaPago
+}
     }
 
     @Override public void keyTyped(KeyEvent e) {}

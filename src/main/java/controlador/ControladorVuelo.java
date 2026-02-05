@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Pasaje;
 import modelo.ReservaDatos;
+import vista.VistaMenu;
 import vista.VistaVuelo;
 import vista.VistaVentaPasaje;
 
@@ -13,11 +14,15 @@ public class ControladorVuelo {
     private VistaVuelo vista;
     private ReservaDatos reserva;
     private List<Pasaje> asientosSeleccionados = new ArrayList<>();
+    private VistaMenu vistaMenu;
+    private ControladorMenu controladorMenu;
 
-    public ControladorVuelo(VistaVuelo vista, ReservaDatos reserva) {
-        this.vista = vista;
-        this.reserva = reserva;
-    }
+    ControladorVuelo(VistaVuelo vista, ReservaDatos reserva, VistaMenu vistaMenu, ControladorMenu controladorMenu) {
+    this.vista = vista;
+    this.reserva = reserva;
+    this.vistaMenu = vistaMenu;
+    this.controladorMenu = controladorMenu;
+}
 
     // Selección de asientos
     public boolean seleccionarAsiento(String fila, String columna) {
@@ -46,12 +51,17 @@ public class ControladorVuelo {
 
     // Ir a la vista de venta de pasajes
     public void irAVistaVenta() {
-        VistaVentaPasaje vistaVenta = new VistaVentaPasaje();
-        ControladorVenta controladorVenta = new ControladorVenta(vistaVenta, reserva);
-        vistaVenta.setControlador(controladorVenta);
-        vistaVenta.setVisible(true);
-        vista.dispose(); // ⚡ corregido
-    }
+    VistaVentaPasaje vistaVenta = new VistaVentaPasaje();
+    ControladorVenta controladorVenta = new ControladorVenta(
+        vistaVenta, 
+        reserva, 
+        this.vistaMenu,        // referencia original del menú
+        this.controladorMenu   // referencia original del controlador del menú
+    );
+    vistaVenta.setControlador(controladorVenta); // registra los listeners
+    vistaVenta.setVisible(true);
+    vista.dispose(); // cerrar la vista de vuelo
+}
 
     // --- Getters de la reserva ---
     public String getIdVueloSeleccionado() {

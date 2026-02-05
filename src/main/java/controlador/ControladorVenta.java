@@ -5,22 +5,27 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.ReservaDatos;
+import vista.VistaMenu;
 import vista.VistaPago;
 import vista.VistaVentaPasaje;
 import vista.VistaVuelo;
 
 public class ControladorVenta implements ActionListener {
-
     private VistaVentaPasaje vista;
     private ReservaDatos reserva;
+    private VistaMenu vistaMenu;
+    private ControladorMenu controladorMenu;
 
-    public ControladorVenta(VistaVentaPasaje vista, ReservaDatos reserva) {
-        this.vista = vista;
-        this.reserva = reserva;
+    public ControladorVenta(VistaVentaPasaje vista, ReservaDatos reserva, VistaMenu vistaMenu, ControladorMenu controladorMenu) {
+    this.vista = vista;
+    this.reserva = reserva;
+    this.vistaMenu = vistaMenu;
+    this.controladorMenu = controladorMenu;
 
-        this.vista.btnSiguiente.addActionListener(this);
-        this.vista.btnRegresar.addActionListener(this);
-    }
+    // ⚡ Esto es clave:
+    this.vista.btnSiguiente.addActionListener(this);
+    this.vista.btnRegresar.addActionListener(this);
+}
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -52,21 +57,26 @@ public class ControladorVenta implements ActionListener {
         reserva.setCliente(cliente);
 
         // Abrir vista de pago
-        VistaPago vPago = new VistaPago();
-        ControladorPago cPago = new ControladorPago(vPago, reserva); // ⚡ usar reserva
-        vPago.setControlador(cPago);
-        vPago.setVisible(true);
-        vista.dispose();
+        VistaPago vistaPago = new VistaPago(vistaMenu, reserva);
+ControladorPago controladorPago = new ControladorPago(vistaPago, reserva, vistaMenu, controladorMenu);
+vistaPago.setControlador(controladorPago);
+vistaPago.setVisible(true);
+
+ vista.dispose();
     }
 
     private void regresarAVuelo() {
-        VistaVuelo vVuelo = new VistaVuelo();
-        // ⚡ Crear un controlador de vuelo con la reserva actual para mantener datos
-        // (opcional, depende si quieres que los asientos se mantengan)
-        ControladorVuelo cVuelo = new ControladorVuelo(vVuelo, reserva);
-        vVuelo.setVisible(true);
-        vVuelo.setLocationRelativeTo(null);
-        vista.dispose();
+    VistaVuelo vVuelo = new VistaVuelo();
+    ControladorVuelo cVuelo = new ControladorVuelo(
+        vVuelo, 
+        reserva, 
+        this.vistaMenu,        // referencia original del menú
+        this.controladorMenu   // referencia original del controlador del menú
+    );
+    vVuelo.setControlador(cVuelo);
+    vVuelo.setVisible(true);
+    vVuelo.setLocationRelativeTo(null);
+    vista.dispose();
     }
 
     private boolean hayCamposVacios() {
