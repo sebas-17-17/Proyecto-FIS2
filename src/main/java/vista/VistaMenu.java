@@ -248,6 +248,7 @@ public class VistaMenu extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblHistorial = new javax.swing.JTable();
         btnRecibo = new javax.swing.JButton();
+        btnRefrescar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -635,6 +636,13 @@ public class VistaMenu extends javax.swing.JFrame {
             }
         });
 
+        btnRefrescar.setText("⟳ Refrescar");
+        btnRefrescar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefrescarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlVuelosCompradosLayout = new javax.swing.GroupLayout(pnlVuelosComprados);
         pnlVuelosComprados.setLayout(pnlVuelosCompradosLayout);
         pnlVuelosCompradosLayout.setHorizontalGroup(
@@ -643,19 +651,21 @@ public class VistaMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1059, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRecibo, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addGroup(pnlVuelosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRecibo, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                    .addComponent(btnRefrescar, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlVuelosCompradosLayout.setVerticalGroup(
             pnlVuelosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlVuelosCompradosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlVuelosCompradosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlVuelosCompradosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlVuelosCompradosLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(btnRecibo)))
+                        .addComponent(btnRefrescar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRecibo))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -1058,6 +1068,10 @@ public class VistaMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReciboActionPerformed
 
+    private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRefrescarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1069,6 +1083,7 @@ public class VistaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     public javax.swing.JButton btnRecibo;
+    public javax.swing.JButton btnRefrescar;
     private javax.swing.JComboBox<String> cmbDestino;
     private javax.swing.JComboBox<String> cmbOrigen;
     private javax.swing.JComboBox<String> cmbPasajeros;

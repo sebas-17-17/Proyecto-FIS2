@@ -19,6 +19,7 @@ public class ControladorMenu implements ActionListener, MouseListener {
     
     private VistaMenu VistaMenu;
     private RutaDAO rutaDAO;
+    private ControladorRegistro controladorRegistro;
     
     //Constructor del controlador
     public ControladorMenu(VistaMenu vista, RutaDAO dao) {
@@ -36,7 +37,7 @@ public class ControladorMenu implements ActionListener, MouseListener {
         this.VistaMenu.addBtnBuscarListener(this);
         
         inicializarSugerencias();
-        new ControladorRegistro(vista); 
+        this.controladorRegistro = new ControladorRegistro(vista);
     }
     
 

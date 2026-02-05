@@ -13,13 +13,16 @@ public class ControladorRegistro implements ActionListener {
     private VistaMenu vista;
     private VentaDAO modeloDAO;
     private DefaultTableModel modeloTabla;
+ 
 
     public ControladorRegistro(VistaMenu vista) {
         this.vista = vista;
         this.modeloDAO = new VentaDAO();
         this.modeloTabla = (DefaultTableModel) this.vista.tblHistorial.getModel();
         this.vista.btnRecibo.addActionListener(this);
+        this.vista.btnRefrescar.addActionListener(this);
         cargarDatos();
+        
     }
 
     public void iniciar() {
@@ -43,11 +46,16 @@ public class ControladorRegistro implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == vista.btnRecibo) {
-            mostrarRecibo();
-        }
+public void actionPerformed(ActionEvent e) {
+
+    if (e.getSource() == vista.btnRecibo) {
+        mostrarRecibo();
     }
+
+    if (e.getSource() == vista.btnRefrescar) {
+        cargarDatos();
+    }
+}
 
     private void mostrarRecibo() {
         int fila = vista.tblHistorial.getSelectedRow();

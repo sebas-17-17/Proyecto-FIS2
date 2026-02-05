@@ -22,7 +22,6 @@ public static void main(String[] args) {
     VistaMenu vMenu = new VistaMenu();
     RutaDAO dao = new RutaDAO();
     ControladorMenu cMenu = new ControladorMenu(vMenu, dao);
-    ControladorRegistro cRegistro = new ControladorRegistro(vMenu);
     cMenu.iniciar();
 
 }
