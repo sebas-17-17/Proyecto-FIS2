@@ -58,11 +58,11 @@ public class ControladorVenta implements ActionListener {
 
         // Abrir vista de pago
         VistaPago vistaPago = new VistaPago(vistaMenu, reserva);
-ControladorPago controladorPago = new ControladorPago(vistaPago, reserva, vistaMenu, controladorMenu);
-vistaPago.setControlador(controladorPago);
-vistaPago.setVisible(true);
-
- vista.dispose();
+        ControladorPago controladorPago = new ControladorPago(
+            vistaPago,reserva,vistaMenu,controladorMenu);
+        vistaPago.setControlador(controladorPago);
+        controladorPago.iniciarVistaPago();
+        vista.dispose();
     }
 
     private void regresarAVuelo() {

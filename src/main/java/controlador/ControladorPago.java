@@ -43,8 +43,28 @@ public class ControladorPago implements ActionListener, KeyListener {
         vista.setLocationRelativeTo(null);
         vista.limpiarCampo();
         vista.setVisible(true);
+        cargarResumenCompra();
     }
+    private void cargarResumenCompra() {
+        if (reserva.getRuta() == null) return;
 
+        String origen = reserva.getRuta().getOrigen();
+        String destino = reserva.getRuta().getDestino();
+        String fechaIda = reserva.getFechaIda() != null
+            ? reserva.getFechaIda().toString()
+            : "";
+        String fechaRegreso = reserva.getFechaRegreso() != null
+            ? reserva.getFechaRegreso().toString()
+            : "";
+        double precioUnitario = reserva.getRuta().getPrecio();
+        int pasajeros = reserva.getPasajeros();
+        double subtotal = precioUnitario * pasajeros;
+        double impuesto = subtotal * 0.15;
+        double total = subtotal + impuesto;
+        vista.mostrarResumen(origen, destino, fechaIda, fechaRegreso, 
+                precioUnitario, impuesto, total
+        );
+    }
     @Override
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == vista.btnValidar) {
@@ -84,11 +104,17 @@ public class ControladorPago implements ActionListener, KeyListener {
 
             Pago p = new Pago(tarjeta, fecha, cedula, codigo);
             if (pagoDAO.guardarPago(p)) {
+                vista.setTarjetaValidada(true);
                 JOptionPane.showMessageDialog(null, "Tarjeta validada correctamente");
             }
         }
 
         if (event.getSource() == vista.btnCompra) {
+            if (!vista.isTarjetaValidada()) {
+                JOptionPane.showMessageDialog(null,
+                "Debe validar la tarjeta antes de realizar la compra.");
+                return;
+            }
             Cliente clienteParaVenta = reserva.getCliente();
             String textoRuta = "Ruta desconocida";
             double precioUnitario = 0.0;
