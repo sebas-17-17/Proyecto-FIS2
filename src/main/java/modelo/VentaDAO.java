@@ -44,41 +44,49 @@ public class VentaDAO {
     
     
     public List<Venta> listar() {
-        List<Venta> lista = new ArrayList<>();
-        File f = new File(Archivo);
-        if (!f.exists()) return lista;
+    List<Venta> lista = new ArrayList<>();
+    File f = new File(Archivo);
+    if (!f.exists()) return lista;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                if (linea.trim().isEmpty()) continue;
-                String[] dat = linea.split(",");
-                if (dat.length >= 7) {
-                    try{
-                        int id = Integer.parseInt(dat[0].trim());
-                        String Nombre = dat[1].trim(); 
-                        Cliente c = new Cliente();
-                        c.setNombre(Nombre);
-                        String ruta = dat[2].trim();
-                        String fecha = dat[3].trim();
-                        String hora = dat[4].trim();
-                        String asiento = dat[5].trim();
-                        double total = Double.parseDouble(dat[6].trim());
+    try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            if (linea.trim().isEmpty()) continue;
+
+            String[] dat = linea.split(",");
+            
+            if (dat.length >= 8) {
+                try {
+                    int id = Integer.parseInt(dat[0].trim());
+
+                    String nombre = dat[1].trim();
+                    String apellido = dat[2].trim();
+
+                    Cliente c = new Cliente();
+                    c.setNombre(nombre);
+                    c.setApellido(apellido);
+
+                    String ruta = dat[3].trim();
+                    String fecha = dat[4].trim();
+                    String hora = dat[5].trim();
+                    String asiento = dat[6].trim();
+                    double total = Double.parseDouble(dat[7].trim());
+
                     Venta v = new Venta(c, ruta, fecha, hora, asiento, total);
                     v.setNroRecibo(id);
+
                     lista.add(v);
-                }catch (NumberFormatException e) {
-                        System.out.println(" Error de número: " + e.getMessage());
-                    } catch (Exception e) {
-                        System.out.println(" Error: " + e.getMessage());
-                    }
-                } else {
-                    System.out.println("Línea ignorada, no cumple el formato de comas");
+
+                } catch (Exception e) {
+                    System.out.println("Error al leer línea: " + e.getMessage());
                 }
+            } else {
+                System.out.println("Línea ignorada, formato incorrecto");
             }
-        } catch (IOException e) {
-            System.err.println("¡Ocurrió un error al leer el archivo!: " + e.getMessage());
         }
-        return lista;
-       }
+    } catch (IOException e) {
+        System.err.println("Error al leer archivo: " + e.getMessage());
+    }
+    return lista;
+}
 }

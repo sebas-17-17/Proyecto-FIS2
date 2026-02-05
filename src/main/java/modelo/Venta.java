@@ -55,6 +55,7 @@ public class Venta {
     }
     
     public String toCSV() {
-        return NroRecibo + "," + cliente.getNombre() + "," + ruta + "," + fechaVuelo + "," + horaVuelo + "," + asiento + "," + total;
+        return NroRecibo + "," + cliente.getNombre() + "," + cliente.getApellido() + "," +
+       ruta + "," + fechaVuelo + "," + horaVuelo + "," + asiento + "," + total;
     }
 }
