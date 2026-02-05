@@ -9,8 +9,9 @@ public class Venta {
     private String asiento;
     private double total;
 
-    public Venta(int NroRecibo, Cliente cliente, String ruta, String fechaVuelo, String horaVuelo, String asiento, double total) {
-        this.NroRecibo = NroRecibo;
+    public Venta(Cliente cliente, String ruta,
+            String fechaVuelo, String horaVuelo, String asiento, double total) {
+        
         this.cliente = cliente;
         this.ruta = ruta;
         this.fechaVuelo = fechaVuelo;
@@ -22,6 +23,12 @@ public class Venta {
     public int getNroRecibo() {
         return NroRecibo;
     }
+
+    public void setNroRecibo(int NroRecibo) {
+        this.NroRecibo = NroRecibo;
+    }
+    
+    
 
     public Cliente getCliente() {
         return cliente;

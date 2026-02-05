@@ -13,15 +13,34 @@ public class VentaDAO {
     private String Archivo = "ventas.txt";
 
     public void guardarVenta(Venta venta) {
-        try (BufferedWriter b = new BufferedWriter(new FileWriter(Archivo, true))) {
-            b.write(venta.toCSV());
-            b.newLine();
-        } catch (IOException e) {
-            System.err.println("¡Ocurrió un error al guardar la venta!: " + e.getMessage());
-        }
+    venta.setNroRecibo(obtenerSiguienteRecibo());
+
+    try (BufferedWriter b = new BufferedWriter(new FileWriter(Archivo, true))) {
+        b.write(venta.toCSV());
+        b.newLine();
+    } catch (IOException e) {
+        System.err.println("Error al guardar la venta: " + e.getMessage());
     }
+}
     
-    
+    private int obtenerSiguienteRecibo() {
+    int ultimo = 0;
+    File f = new File(Archivo);
+    if (!f.exists()) return 1;
+
+    try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            if (linea.trim().isEmpty()) continue;
+            String[] dat = linea.split(",");
+            ultimo = Integer.parseInt(dat[0].trim());
+        }
+    } catch (Exception e) {
+        System.out.println("Error leyendo recibo: " + e.getMessage());
+    }
+    return ultimo + 1;
+}
+
     
     
     public List<Venta> listar() {
@@ -45,7 +64,9 @@ public class VentaDAO {
                         String hora = dat[4].trim();
                         String asiento = dat[5].trim();
                         double total = Double.parseDouble(dat[6].trim());
-                    lista.add(new Venta(id, c, ruta, fecha, hora, asiento, total));
+                    Venta v = new Venta(c, ruta, fecha, hora, asiento, total);
+                    v.setNroRecibo(id);
+                    lista.add(v);
                 }catch (NumberFormatException e) {
                         System.out.println(" Error de número: " + e.getMessage());
                     } catch (Exception e) {

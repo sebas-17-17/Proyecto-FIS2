@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.swing.JOptionPane;
 
@@ -96,7 +98,7 @@ public class ControladorPago implements ActionListener, KeyListener {
             }
 
             String fecha = reserva.getFechaIda().toString(); 
-            String hora = "00:00";
+            String hora = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
 
             String asiento = "General";
             if (!reserva.getAsientosSeleccionados().isEmpty()) {
@@ -107,7 +109,7 @@ public class ControladorPago implements ActionListener, KeyListener {
 
             int nroRecibo = (int) (Math.random()) + 1;
 
-            Venta nuevaVenta = new Venta(nroRecibo, clienteParaVenta, textoRuta, fecha, hora, asiento, total);
+            Venta nuevaVenta = new Venta(clienteParaVenta, textoRuta, fecha, hora, asiento, total);
 
             ventaDAO.guardarVenta(nuevaVenta);
             JOptionPane.showMessageDialog(null,
