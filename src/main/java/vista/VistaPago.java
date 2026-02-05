@@ -11,9 +11,9 @@ import modelo.RutaDAO;
 
 public class VistaPago extends javax.swing.JFrame {
     private VistaMenu vistaMenu; // referencia a la vista original
-private ReservaDatos reserva; // la reserva actual
-private ControladorMenu controladorMenu;
- private RutaDAO rutaDAO = new RutaDAO();
+    private ReservaDatos reserva; // la reserva actual
+    private ControladorMenu controladorMenu;
+    private RutaDAO rutaDAO = new RutaDAO();
  
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaPago.class.getName());
 
@@ -126,12 +126,7 @@ private ControladorMenu controladorMenu;
     // Para que tengan un listener los botones 
     public void addBtnValidarListener(
             java.awt.event.ActionListener listenControles) {
-        btnValidacion.addActionListener(listenControles);
-    }
-    
-    public void addBtnAtrasListener(
-            java.awt.event.ActionListener listenControles) {
-        btnFlecha.addActionListener(listenControles);
+        btnValidar.addActionListener(listenControles);
     }
     
     public void addBtnRealizarListener(
@@ -148,7 +143,6 @@ private ControladorMenu controladorMenu;
     
     
     public void setControlador(ControladorPago c) {
-    addBtnAtrasListener(c);
     addBtnValidarListener(c);
     addBtnRealizarListener(c);
 }
@@ -162,7 +156,6 @@ private ControladorMenu controladorMenu;
         jPanel1 = new javax.swing.JPanel();
         panelTitulo = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
-        btnFlecha = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         panelMetodoPago = new javax.swing.JPanel();
         TabMetodo = new javax.swing.JTabbedPane();
@@ -173,10 +166,9 @@ private ControladorMenu controladorMenu;
         txtExpiracion = new javax.swing.JTextField();
         lblSeguridad = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        btnValidacion = new javax.swing.JButton();
+        btnValidar = new javax.swing.JButton();
         txtCedula = new javax.swing.JTextField();
         lblCedula = new javax.swing.JLabel();
-        jTabbedPane7 = new javax.swing.JTabbedPane();
         panelResumenCompra = new javax.swing.JPanel();
         TabResumen = new javax.swing.JTabbedPane();
         panelResumen = new javax.swing.JPanel();
@@ -199,15 +191,14 @@ private ControladorMenu controladorMenu;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelTitulo.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(8, 8, 78));
+
+        panelTitulo.setBackground(new java.awt.Color(255, 255, 255));
         panelTitulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
-        lblTitulo.setFont(new java.awt.Font("Segoe UI Emoji", 1, 36)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Perpetua Titling MT", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 208, 0));
         lblTitulo.setText("Aerolíneas FIS");
-
-        btnFlecha.setText("Flecha");
-        btnFlecha.setMaximumSize(new java.awt.Dimension(906, 607));
-        btnFlecha.setMinimumSize(new java.awt.Dimension(906, 607));
 
         javax.swing.GroupLayout panelTituloLayout = new javax.swing.GroupLayout(panelTitulo);
         panelTitulo.setLayout(panelTituloLayout);
@@ -215,21 +206,18 @@ private ControladorMenu controladorMenu;
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTituloLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 861, Short.MAX_VALUE)
-                .addComponent(btnFlecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(866, Short.MAX_VALUE))
         );
         panelTituloLayout.setVerticalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTituloLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnFlecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitulo))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
+        btnRegresar.setBackground(new java.awt.Color(255, 208, 0));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         btnRegresar.setText("Regresar al Inicio");
         btnRegresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -249,28 +237,32 @@ private ControladorMenu controladorMenu;
         TabMetodo.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
 
         lblTarjeta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblTarjeta.setForeground(new java.awt.Color(8, 8, 78));
         lblTarjeta.setText("Número de tarjeta");
 
         txtTarjeta.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         txtTarjeta.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         lblExpiracion.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblExpiracion.setForeground(new java.awt.Color(8, 8, 78));
         lblExpiracion.setText("Fecha de expiración");
 
         txtExpiracion.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         txtExpiracion.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         lblSeguridad.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblSeguridad.setForeground(new java.awt.Color(8, 8, 78));
         lblSeguridad.setText("Código de seguridad");
 
         txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         txtCodigo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
-        btnValidacion.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
-        btnValidacion.setText("Validar Tarjeta");
-        btnValidacion.addActionListener(new java.awt.event.ActionListener() {
+        btnValidar.setBackground(new java.awt.Color(255, 208, 0));
+        btnValidar.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
+        btnValidar.setText("Validar Tarjeta");
+        btnValidar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValidacionActionPerformed(evt);
+                btnValidarActionPerformed(evt);
             }
         });
 
@@ -278,6 +270,7 @@ private ControladorMenu controladorMenu;
         txtCedula.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         lblCedula.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblCedula.setForeground(new java.awt.Color(8, 8, 78));
         lblCedula.setText("Número de Cédula");
 
         javax.swing.GroupLayout PanelTarjetaLayout = new javax.swing.GroupLayout(PanelTarjeta);
@@ -306,7 +299,7 @@ private ControladorMenu controladorMenu;
                 .addGap(132, 132, 132))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelTarjetaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnValidacion)
+                .addComponent(btnValidar)
                 .addGap(37, 37, 37))
         );
         PanelTarjetaLayout.setVerticalGroup(
@@ -325,12 +318,11 @@ private ControladorMenu controladorMenu;
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnValidacion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
         TabMetodo.addTab("Pago con Tarjeta", PanelTarjeta);
-        TabMetodo.addTab("Pago con Efectivo", jTabbedPane7);
 
         javax.swing.GroupLayout panelMetodoPagoLayout = new javax.swing.GroupLayout(panelMetodoPago);
         panelMetodoPago.setLayout(panelMetodoPagoLayout);
@@ -354,12 +346,15 @@ private ControladorMenu controladorMenu;
         TabResumen.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
 
         lblDestino.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblDestino.setForeground(new java.awt.Color(8, 8, 78));
         lblDestino.setText("País de Salida");
 
         lblDestino1.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblDestino1.setForeground(new java.awt.Color(8, 8, 78));
         lblDestino1.setText("Fecha de Regreso");
 
         lblDestino2.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblDestino2.setForeground(new java.awt.Color(8, 8, 78));
         lblDestino2.setText("Fecha de Ida");
 
         txtSalida.setEditable(false);
@@ -373,9 +368,11 @@ private ControladorMenu controladorMenu;
         jSeparator1.setMinimumSize(new java.awt.Dimension(60, 20));
 
         lblPrecio.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblPrecio.setForeground(new java.awt.Color(8, 8, 78));
         lblPrecio.setText("Precio de boleto");
 
         lblImpuesto.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblImpuesto.setForeground(new java.awt.Color(8, 8, 78));
         lblImpuesto.setText("Impuestos");
 
         txtPrecioBoleto.setEditable(false);
@@ -387,6 +384,7 @@ private ControladorMenu controladorMenu;
         txtImpuesto.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         lblPago.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblPago.setForeground(new java.awt.Color(8, 8, 78));
         lblPago.setText("Total a Pagar");
         lblPago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -395,6 +393,7 @@ private ControladorMenu controladorMenu;
         txtPago.setEnabled(false);
 
         lblDestino3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblDestino3.setForeground(new java.awt.Color(8, 8, 78));
         lblDestino3.setText("País de Destino");
 
         txtIda.setEditable(false);
@@ -495,6 +494,7 @@ private ControladorMenu controladorMenu;
                 .addComponent(TabResumen, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        btnCompra.setBackground(new java.awt.Color(255, 208, 0));
         btnCompra.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         btnCompra.setText("Realizar Compra");
         btnCompra.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -585,9 +585,9 @@ private ControladorMenu controladorMenu;
 
     }//GEN-LAST:event_btnRegresarMouseClicked
 
-    private void btnValidacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidacionActionPerformed
+    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnValidacionActionPerformed
+    }//GEN-LAST:event_btnValidarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -598,13 +598,11 @@ private ControladorMenu controladorMenu;
     private javax.swing.JTabbedPane TabMetodo;
     private javax.swing.JTabbedPane TabResumen;
     public javax.swing.JButton btnCompra;
-    public javax.swing.JButton btnFlecha;
     public javax.swing.JButton btnRegresar;
-    public javax.swing.JButton btnValidacion;
+    public javax.swing.JButton btnValidar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JLabel lblCedula;
     private javax.swing.JLabel lblDestino;
     private javax.swing.JLabel lblDestino1;

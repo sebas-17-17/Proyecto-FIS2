@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
+
 import modelo.Cliente;
 import modelo.Pago;
 import modelo.PagoDao;
@@ -19,7 +21,8 @@ import vista.VistaPago;
 public class ControladorPago implements ActionListener, KeyListener {
 
     private VistaPago vista;
-    private PagoDao pagoDAO;
+    // NO BORRAR ESTE CODIGO
+    private PagoDao pagoDAO = new PagoDao();
     private ReservaDatos reserva;
     private VistaMenu vistaMenu;
     private ControladorMenu controladorMenu;
@@ -31,9 +34,6 @@ public class ControladorPago implements ActionListener, KeyListener {
         this.reserva = reserva;
         this.vistaMenu = vistaMenu;
         this.controladorMenu = controladorMenu;
-      
-      
-        
     }
 
     public void iniciarVistaPago() {
@@ -44,13 +44,8 @@ public class ControladorPago implements ActionListener, KeyListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == vista.btnFlecha) {
-            vista.dispose();
-            // aquí podrías volver a la vistaVenta si la pasas por constructor
-        }
-
-        if (e.getSource() == vista.btnValidacion) {
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == vista.btnValidar) {
             String cedula = vista.getCedula();
             String tarjeta = vista.getNumTarjeta().replace(" ", "");
             String fecha = vista.getExpiracion().replace("/", "");
@@ -88,11 +83,10 @@ public class ControladorPago implements ActionListener, KeyListener {
             Pago p = new Pago(tarjeta, fecha, cedula, codigo);
             if (pagoDAO.guardarPago(p)) {
                 JOptionPane.showMessageDialog(null, "Tarjeta validada correctamente");
-                vista.limpiarCampo();
             }
         }
 
-        if (e.getSource() == vista.btnCompra) {
+        if (event.getSource() == vista.btnCompra) {
             Cliente clienteParaVenta = reserva.getCliente();
             String textoRuta = "Ruta desconocida";
             double precioUnitario = 0.0;
@@ -117,21 +111,23 @@ public class ControladorPago implements ActionListener, KeyListener {
 
             ventaDAO.guardarVenta(nuevaVenta);
             JOptionPane.showMessageDialog(null,
-                "Compra registrada exitosamente.\nSu recibo electrónico está en Vuelos Comprados.\nGracias por viajar con nosotros.");
+                "Compra registrada exitosamente.\n"
+                        + "Su recibo electrónico está en Vuelos Comprados.\n"
+                        + "Gracias por viajar con nosotros.");
             vista.limpiarCampo();
         }
         
-        if (e.getSource() == vista.btnRegresar) {
+        if (event.getSource() == vista.btnRegresar) {
             System.out.println(vistaMenu); 
-    vistaMenu.setVisible(true);   // muestra la ventana original
-    // Recargar combos si quieres
-    ArrayList<String> ciudadesOrigen = rutaDAO.obtenerListaOrigenes();
-    ArrayList<String> ciudadesDestino = rutaDAO.obtenerListaDestinos();
-    vistaMenu.cargarCiudadesEnCombo(ciudadesOrigen);
-    vistaMenu.cargarCiudadesEnCombo2(ciudadesDestino);
+            vistaMenu.setVisible(true);   // muestra la ventana original
+            // Recargar combos si quieres
+            ArrayList<String> ciudadesOrigen = rutaDAO.obtenerListaOrigenes();
+            ArrayList<String> ciudadesDestino = rutaDAO.obtenerListaDestinos();
+            vistaMenu.cargarCiudadesEnCombo(ciudadesOrigen);
+            vistaMenu.cargarCiudadesEnCombo2(ciudadesDestino);
 
-    vista.dispose(); // cierra la vistaPago
-}
+            vista.dispose(); // cierra la vistaPago
+        }   
     }
 
     @Override public void keyTyped(KeyEvent e) {}
