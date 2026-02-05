@@ -375,6 +375,11 @@ public class VistaVentaPasaje extends javax.swing.JFrame {
                 txtNacimientoFocusLost(evt);
             }
         });
+        txtNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNacimientoActionPerformed(evt);
+            }
+        });
 
         txtNacionalidad.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         txtNacionalidad.setForeground(new java.awt.Color(153, 153, 153));
@@ -678,13 +683,13 @@ public class VistaVentaPasaje extends javax.swing.JFrame {
 
     private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
         if (txtTelefono.getText().isEmpty()) {
-            txtTelefono.setText("Numero");
+            txtTelefono.setText("Telefono");
             txtTelefono.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtTelefonoFocusLost
 
     private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
-        if (txtTelefono.getText().equals("Numero")) {
+        if (txtTelefono.getText().equals("Telefono")) {
             txtTelefono.setText("");
             txtTelefono.setForeground(Color.BLACK);
         }
@@ -710,13 +715,13 @@ public class VistaVentaPasaje extends javax.swing.JFrame {
 
     private void txtNumdocFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumdocFocusLost
         if (txtNumdoc.getText().isEmpty()) {
-            txtNumdoc.setText("Numerodoc");
+            txtNumdoc.setText("Nº documento");
             txtNumdoc.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtNumdocFocusLost
 
     private void txtNumdocFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumdocFocusGained
-        if (txtNumdoc.getText().equals("Numerodoc")) {
+        if (txtNumdoc.getText().equals("Nº documento")) {
             txtNumdoc.setText("");
             txtNumdoc.setForeground(Color.BLACK);
         }
@@ -742,13 +747,13 @@ public class VistaVentaPasaje extends javax.swing.JFrame {
 
     private void txtNacimientoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNacimientoFocusLost
         if (txtNacimiento.getText().isEmpty()) {
-            txtNacimiento.setText("Nombre");
+            txtNacimiento.setText("dd-mm-aaaa");
             txtNacimiento.setForeground(Color.GRAY);
         }
     }//GEN-LAST:event_txtNacimientoFocusLost
 
     private void txtNacimientoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNacimientoFocusGained
-        if (txtNacimiento.getText().equals("Nacimiento")) {
+        if (txtNacimiento.getText().equals("dd-mm-aaaa")) {
             txtNacimiento.setText("");
             txtNacimiento.setForeground(Color.BLACK);
         }
@@ -789,6 +794,10 @@ public class VistaVentaPasaje extends javax.swing.JFrame {
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void txtNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNacimientoActionPerformed
 public void setControlador(ControladorVenta c) {
   //nada
 }
