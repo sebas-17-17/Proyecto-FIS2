@@ -66,6 +66,8 @@ vistaPago.setVisible(true);
     }
 
     private void regresarAVuelo() {
+    reserva.getAsientosSeleccionados().clear();
+    
     VistaVuelo vVuelo = new VistaVuelo();
     ControladorVuelo cVuelo = new ControladorVuelo(
         vVuelo, 
