@@ -36,4 +36,11 @@ public class ReservaDatos {
 
     public String getMetodoPago() { return metodoPago; }
     public void setMetodoPago(String metodoPago) { this.metodoPago = metodoPago; }
+    
+    private double totalP;
+
+    public double getTotal() { return totalP; }
+    public void setTotal(double total) { this.totalP = total; }
+    
+
 }

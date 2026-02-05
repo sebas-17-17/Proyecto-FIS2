@@ -148,13 +148,13 @@ public class ControladorPago implements ActionListener, KeyListener {
         if (event.getSource() == vista.btnRegresar) {
             System.out.println(vistaMenu); 
             vistaMenu.setVisible(true);   // muestra la ventana original
-            // Recargar combos si quieres
+            
             ArrayList<String> ciudadesOrigen = rutaDAO.obtenerListaOrigenes();
             ArrayList<String> ciudadesDestino = rutaDAO.obtenerListaDestinos();
             vistaMenu.cargarCiudadesEnCombo(ciudadesOrigen);
             vistaMenu.cargarCiudadesEnCombo2(ciudadesDestino);
 
-            vista.dispose(); // cierra la vistaPago
+            vista.dispose(); 
         }   
     }
 
