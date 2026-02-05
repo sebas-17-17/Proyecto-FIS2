@@ -6,10 +6,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.Cliente;
 import modelo.Pago;
 import modelo.PagoDao;
 import modelo.ReservaDatos;
 import modelo.RutaDAO;
+import modelo.Venta;
+import modelo.VentaDAO;
 import vista.VistaMenu;
 import vista.VistaPago;
 
@@ -21,6 +24,7 @@ public class ControladorPago implements ActionListener, KeyListener {
     private VistaMenu vistaMenu;
     private ControladorMenu controladorMenu;
     private RutaDAO rutaDAO = new RutaDAO();
+    private VentaDAO ventaDAO = new VentaDAO();
 
     public ControladorPago(VistaPago vista, ReservaDatos reserva, VistaMenu vistaMenu, ControladorMenu controladorMenu) {
         this.vista = vista;
@@ -89,6 +93,29 @@ public class ControladorPago implements ActionListener, KeyListener {
         }
 
         if (e.getSource() == vista.btnCompra) {
+            Cliente clienteParaVenta = reserva.getCliente();
+            String textoRuta = "Ruta desconocida";
+            double precioUnitario = 0.0;
+            if (reserva.getRuta() != null) {
+                textoRuta = reserva.getRuta().getOrigen() + " - " + reserva.getRuta().getDestino();
+                precioUnitario = reserva.getRuta().getPrecio();
+            }
+
+            String fecha = reserva.getFechaIda().toString(); 
+            String hora = "00:00";
+
+            String asiento = "General";
+            if (!reserva.getAsientosSeleccionados().isEmpty()) {
+                asiento = reserva.getAsientosSeleccionados().get(0).toString();
+            }
+
+            double total = precioUnitario * reserva.getPasajeros();
+
+            int nroRecibo = (int) (Math.random()) + 1;
+
+            Venta nuevaVenta = new Venta(nroRecibo, clienteParaVenta, textoRuta, fecha, hora, asiento, total);
+
+            ventaDAO.guardarVenta(nuevaVenta);
             JOptionPane.showMessageDialog(null,
                 "Compra registrada exitosamente.\nSu recibo electrónico está en Vuelos Comprados.\nGracias por viajar con nosotros.");
             vista.limpiarCampo();

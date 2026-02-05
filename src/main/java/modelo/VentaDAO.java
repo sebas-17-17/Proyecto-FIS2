@@ -21,6 +21,9 @@ public class VentaDAO {
         }
     }
     
+    
+    
+    
     public List<Venta> listar() {
         List<Venta> lista = new ArrayList<>();
         File f = new File(Archivo);
@@ -29,17 +32,32 @@ public class VentaDAO {
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
             String linea;
             while ((linea = br.readLine()) != null) {
+                if (linea.trim().isEmpty()) continue;
                 String[] dat = linea.split(",");
-                if (dat.length == 7) {
-                    String Nombre = dat[1]; 
-                    Cliente c = new Cliente();
-                    c.setNombre(Nombre);
-                    lista.add(new Venta(Integer.parseInt(dat[0]), c, dat[2], dat[3], dat[4], dat[5], Double.parseDouble(dat[6])));
+                if (dat.length >= 7) {
+                    try{
+                        int id = Integer.parseInt(dat[0].trim());
+                        String Nombre = dat[1].trim(); 
+                        Cliente c = new Cliente();
+                        c.setNombre(Nombre);
+                        String ruta = dat[2].trim();
+                        String fecha = dat[3].trim();
+                        String hora = dat[4].trim();
+                        String asiento = dat[5].trim();
+                        double total = Double.parseDouble(dat[6].trim());
+                    lista.add(new Venta(id, c, ruta, fecha, hora, asiento, total));
+                }catch (NumberFormatException e) {
+                        System.out.println(" Error de número: " + e.getMessage());
+                    } catch (Exception e) {
+                        System.out.println(" Error: " + e.getMessage());
+                    }
+                } else {
+                    System.out.println("Línea ignorada, no cumple el formato de comas");
                 }
             }
         } catch (IOException e) {
-            System.err.println("¡Ocurrió un error al leer las ventas!: " + e.getMessage());
+            System.err.println("¡Ocurrió un error al leer el archivo!: " + e.getMessage());
         }
         return lista;
-    }
+       }
 }

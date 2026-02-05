@@ -20,4 +20,10 @@ public class Pasaje {
     public String getCodigo() {
         return fila + columna;
     }
+
+    @Override
+    public String toString() {
+        return "Fila: " + fila + " y columna: " + columna;
+    }
+    
 }

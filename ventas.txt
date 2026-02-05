@@ -1,1 +1,2 @@
-1,Jake Diaz,Quito(UIO) - Madrid(MDR),19/07/2015,20:15,A22,2001.50
+1,fdfd,Quito-Ecuador - Guayaquil-Ecuador,2026-02-04,00:00,Fila: Fy columna: 2,200.0
+1,Danny,Quito-Ecuador - Cuenca-Ecuador,2026-02-04,00:00,Fila: Ey columna: 2,100.0

@@ -584,6 +584,7 @@ public class VistaMenu extends javax.swing.JFrame {
 
         tbpMenu.addTab("Vuelos", pnlVuelos);
 
+        tblHistorial.setAutoCreateRowSorter(true);
         tblHistorial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
