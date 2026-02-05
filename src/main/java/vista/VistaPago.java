@@ -22,9 +22,34 @@ public class VistaPago extends javax.swing.JFrame {
     public VistaPago(VistaMenu vistaMenu, ReservaDatos reserva) {
     initComponents();
     configurarBloque();
+    txtSalida.setEditable(false);
+    txtDestino.setEditable(false);
+    txtIda.setEditable(false);
+    txtRegreso.setEditable(false);
+    txtPrecioBoleto.setEditable(false);
+    txtImpuesto.setEditable(false);
+    txtPago.setEditable(false);
     this.vistaMenu = vistaMenu; // ⚡ le pasamos la ventana original
     this.reserva = reserva;
 }
+    // Mostrar en los jtext
+    public void mostrarResumen(
+        String origen,
+        String destino,
+        String fechaIda,
+        String fechaRegreso,
+        double precio,
+        double impuestos,
+        double total
+    ) {
+        txtSalida.setText(origen);
+        txtDestino.setText(destino);
+        txtIda.setText(fechaIda);
+        txtRegreso.setText(fechaRegreso);
+        txtPrecioBoleto.setText(String.valueOf(precio));
+        txtImpuesto.setText(String.valueOf(impuestos));
+        txtPago.setText(String.valueOf(total));
+    }
     
     // Configurar los bloques de texto
     private void configurarBloque() {
