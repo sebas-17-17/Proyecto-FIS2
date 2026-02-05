@@ -30,21 +30,21 @@ public class ControladorRegistro implements ActionListener {
     }
 
     private void cargarDatos() {
-        List<Venta> ventas = modeloDAO.listar();
-        modeloTabla.setRowCount(0);
-        for (Venta v : ventas) {
-            modeloTabla.addRow(new Object[]{
-                v.getNroRecibo(), 
-                v.getCliente().getNombre(), 
-                v.getRuta(), 
-                v.getFechaVuelo(),
-                v.getHoraVuelo(),
-                v.getAsiento(),
-                v.getTotal()
-            });
-        }
-    }
+    List<Venta> ventas = modeloDAO.listar();
+    modeloTabla.setRowCount(0);
 
+    for (Venta v : ventas) {
+        modeloTabla.addRow(new Object[]{
+            v.getNroRecibo(),
+            v.getCliente().getNombre() + " " + v.getCliente().getApellido(),
+            v.getRuta(),
+            v.getFechaVuelo(),
+            v.getHoraVuelo(),
+            v.getAsiento(),
+            v.getTotal()
+        });
+    }
+}
     @Override
 public void actionPerformed(ActionEvent e) {
 
