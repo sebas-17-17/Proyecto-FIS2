@@ -14,6 +14,7 @@ public class VistaPago extends javax.swing.JFrame {
     private ReservaDatos reserva; // la reserva actual
     private ControladorMenu controladorMenu;
     private RutaDAO rutaDAO = new RutaDAO();
+    private boolean tarjetaValidada = false;
  
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaPago.class.getName());
 
@@ -29,26 +30,38 @@ public class VistaPago extends javax.swing.JFrame {
     txtPrecioBoleto.setEditable(false);
     txtImpuesto.setEditable(false);
     txtPago.setEditable(false);
-    this.vistaMenu = vistaMenu; // ⚡ le pasamos la ventana original
+    this.vistaMenu = vistaMenu; // le pasamos la ventana original
     this.reserva = reserva;
 }
     // Mostrar en los jtext
     public void mostrarResumen(
-        String origen,
-        String destino,
-        String fechaIda,
-        String fechaRegreso,
-        double precio,
-        double impuestos,
-        double total
-    ) {
-        txtSalida.setText(origen);
-        txtDestino.setText(destino);
-        txtIda.setText(fechaIda);
-        txtRegreso.setText(fechaRegreso);
-        txtPrecioBoleto.setText(String.valueOf(precio));
-        txtImpuesto.setText(String.valueOf(impuestos));
-        txtPago.setText(String.valueOf(total));
+    String origen,
+    String destino,
+    String fechaIda,
+    String fechaRegreso,
+    double precioUnitario,
+    double impuesto,
+    double total
+) {
+    txtSalida.setText(origen);
+    txtDestino.setText(destino);
+    txtIda.setText(fechaIda);
+    txtRegreso.setText(fechaRegreso);
+
+    txtPrecioBoleto.setText(String.format("%.2f", precioUnitario));
+    txtImpuesto.setText(String.format("%.2f", impuesto));
+    txtPago.setText(String.format("%.2f", total));
+}
+    /*
+    *Implementando el metodo el por el cual si se presiona 
+    * realizar compra sin haber llenado la tarjeta no compras
+    */
+    public void setTarjetaValidada(boolean estado) {
+        this.tarjetaValidada = estado;
+    }
+
+    public boolean isTarjetaValidada() {
+        return tarjetaValidada;
     }
     
     // Configurar los bloques de texto
@@ -420,6 +433,7 @@ public class VistaPago extends javax.swing.JFrame {
         lblPago.setText("Total a Pagar");
         lblPago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        txtPago.setBackground(new java.awt.Color(225, 225, 225));
         txtPago.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
         txtPago.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtPago.setEnabled(false);
@@ -555,7 +569,7 @@ public class VistaPago extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -623,14 +637,14 @@ public class VistaPago extends javax.swing.JFrame {
     private javax.swing.JPanel panelTitulo;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDestino;
+    public javax.swing.JTextField txtDestino;
     private javax.swing.JTextField txtExpiracion;
-    private javax.swing.JTextField txtIda;
-    private javax.swing.JTextField txtImpuesto;
-    private javax.swing.JTextField txtPago;
-    private javax.swing.JTextField txtPrecioBoleto;
-    private javax.swing.JTextField txtRegreso;
-    private javax.swing.JTextField txtSalida;
+    public javax.swing.JTextField txtIda;
+    public javax.swing.JTextField txtImpuesto;
+    public javax.swing.JTextField txtPago;
+    public javax.swing.JTextField txtPrecioBoleto;
+    public javax.swing.JTextField txtRegreso;
+    public javax.swing.JTextField txtSalida;
     private javax.swing.JTextField txtTarjeta;
     // End of variables declaration//GEN-END:variables
 }
